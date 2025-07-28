@@ -3,18 +3,49 @@
 	<head>
 		<title>{{title}}</title>
 		<!-- CSS -->
+		 <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+    }
+  </style>
 	</head>
 
     <body>
-	<nav>
-	    <a href="">Home</a>
-	    <a href="">Info</a>
-	    <a href="">RSVP</a>
-	    <a href="">Music</a>
-	</nav>
+	<header class="flex justify-between items-center px-6 py-4 bg-white text-black shadow-md relative z-10">
+    <div class="text-2xl font-bold">I&C</div>
+
+    <!-- Hamburger Icon (mobile only) -->
+    <div id="burger" class="space-y-1 md:hidden cursor-pointer z-20">
+      <div class="w-6 h-0.5 bg-black"></div>
+      <div class="w-6 h-0.5 bg-black"></div>
+      <div class="w-6 h-0.5 bg-black"></div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav id="mobile-menu" class="hidden flex flex-col gap-6 bg-white text-black absolute top-full left-0 w-full px-6 py-4  z-20 md:flex md:flex-row md:items-center md:static md:w-auto md:p-0 md:gap-6">
+      <a href="index.html" class="hover:text-gray-700 transition">Home</a>
+      <a href="details.html" class="hover:text-gray-700 transition">Event Details</a>
+      <a href="gallery.html" class="hover:text-gray-700 transition">Photo Gallery</a>
+      <a href="playlist.html" class="hover:text-gray-700 transition">Playlist</a>
+      <a href="rsvp.html" class="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">RSVP</a>
+    </nav>
+  </header>
 	{% block content %}{% endblock content %}
-	<footer>
-		Come have a wonderful time!!
-	</footer>
+
+	<!-- SCRIPTS (inside the body, last) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.getElementById('burger');
+      const menu = document.getElementById('mobile-menu');
+
+      burger.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
     </body>
 </html>

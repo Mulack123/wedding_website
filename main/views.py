@@ -4,5 +4,4 @@ from django.template import loader
 
 # Create your views here.
 def home(request):
-    template = loader.get_template("main/index.html")
-    return render(request, "main/index.html", {"name":"Calum"})
+    return render(request, "main/index.html", {"title":"I&C Wedding"})
