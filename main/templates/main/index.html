@@ -20,6 +20,9 @@
     </div>
   </section>
 
+  {% for item in guests %}
+    {{item}}
+  {% endfor %}
   
   <script>
     const countDownDate = new Date("Oct 1, 2026 12:00:00").getTime();
