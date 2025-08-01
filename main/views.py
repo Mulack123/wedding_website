@@ -10,3 +10,6 @@ def home(request):
 
 def details(request):
     return render(request, "main/details.html", {"title":"I&C Wedding"})
+
+def gallery(request):
+    return render(request, "main/gallery.html", {"title":"I&C Wedding"})

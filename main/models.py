@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Guest(models.Model):
@@ -11,8 +12,8 @@ class Guest(models.Model):
 class RSVP(models.Model):
     guest = models.OneToOneField(Guest, on_delete=models.CASCADE, primary_key=True)
     going = models.BooleanField()
-    # TODO @calum: Add a timestamp
-    # TODO: food choice
+    timestamp = models.DateTimeField(default=timezone.now)
+    #TODO: Food choice
 
 # TODO: Decide on structure for Music suggestions
 # class Music(models.Model):
