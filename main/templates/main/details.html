@@ -1,0 +1,76 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+ <!--Information to be updated as and when, current all place holder information-->
+<!-- Main Content -->
+  <main class="relative max-w-4xl mx-auto py-16 px-6 bg-white/80 text-black rounded-xl shadow-lg mt-10 ">
+    <h1 class="text-4xl font-bold mb-6 text-center">Wedding Details</h1>
+
+    <!-- Tabs for separate information types -->
+    <div class="flex flex-wrap justify-center mb-8 border-b border-gray-300">
+      <button data-tab-target="#dresscode" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Dress Code</button>
+      <button data-tab-target="#venue" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Venue Information</button>
+      <button data-tab-target="#hotel" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Hotel Information</button>
+      <button data-tab-target="#parking" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Parking</button>
+    </div>
+
+    <!-- Tab Contents -->
+    <section id="dresscode" class="tab-content">
+      <h2 class="text-2xl font-semibold mb-2">Dress Code</h2>
+      <p>Please dress elegantly — cocktail attire recommended. We suggest light, breathable fabrics for comfort.</p>
+    </section>
+
+    <section id="venue" class="tab-content hidden">
+      <h2 class="text-2xl font-semibold mb-2">Venue Information</h2>
+      <p>📍 The ceremony will be held at [Venue Name], located at [Venue Address].</p>
+      <p>Feel free to arrive 15–20 minutes early to find seating and settle in.</p>
+    </section>
+
+    <section id="hotel" class="tab-content hidden">
+      <h2 class="text-2xl font-semibold mb-2">Hotel Information</h2>
+      <p>We've reserved a block of rooms at [Hotel Name]. Use the code <strong>WEDDING2026</strong> when booking for a discounted rate.</p>
+      <p>Address: [Hotel Address]</p>
+      <p>Phone: [Hotel Phone Number]</p>
+    </section>
+   
+    <section id="parking" class="tab-content hidden">
+      <h2 class="text-2xl font-semibold mb-2">Parking</h2>
+      <p>Free parking is available on-site. Alternatively, nearby lots at [Locations] are available for a small fee.</p>
+      <p>We recommend carpooling or rideshares if possible.</p>
+    </section>
+  </main>
+
+  <script>
+    // Tabs logic
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    function clearActive() {
+      tabButtons.forEach(btn => {
+        btn.classList.remove('border-black');
+        btn.classList.add('border-transparent');
+      });
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+    }
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        clearActive();
+        button.classList.add('border-black');
+        const target = document.querySelector(button.dataset.tabTarget);
+        if (target) {
+          target.classList.remove('hidden');
+        }
+      });
+    });
+
+    // Activate first tab by default on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      if (tabButtons.length) {
+        tabButtons[0].click();
+      }
+    });
+  </script>
+{% endblock content %}
