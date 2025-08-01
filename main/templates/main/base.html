@@ -26,8 +26,8 @@
 
     <!-- Navigation Menu -->
     <nav id="mobile-menu" class="hidden flex flex-col gap-6 bg-white text-black absolute top-full left-0 w-full px-6 py-4  z-20 md:flex md:flex-row md:items-center md:static md:w-auto md:p-0 md:gap-6">
-      <a href="index.html" class="hover:text-gray-700 transition">Home</a>
-      <a href="details.html" class="hover:text-gray-700 transition">Event Details</a>
+      <a href="{% url 'home' %}" class="hover:text-gray-700 transition">Home</a>
+      <a href="{% url 'details' %}" class="hover:text-gray-700 transition">Event Details</a>
       <a href="gallery.html" class="hover:text-gray-700 transition">Photo Gallery</a>
       <a href="playlist.html" class="hover:text-gray-700 transition">Playlist</a>
       <a href="rsvp.html" class="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">RSVP</a>
