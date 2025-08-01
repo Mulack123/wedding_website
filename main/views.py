@@ -6,15 +6,7 @@ from main.models import Guest
 
 # Create your views here.
 def home(request):
-<<<<<<< HEAD
-    guests = Guest.objects.all()
-    return render(request, "main/index.html", {
-        "title":"I&C Wedding",
-        "guests":guests,
-    })
-=======
     return render(request, "main/index.html", {"title":"I&C Wedding"})
 
 def details(request):
     return render(request, "main/details.html", {"title":"I&C Wedding"})
->>>>>>> origin/main
