@@ -8,10 +8,10 @@
 
   <!-- Tabs for separate information types -->
   <div class="flex flex-wrap justify-center mb-8 border-b border-gray-300">
-    <button data-tab-target="#dresscode" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Dress Code</button>
-    <button data-tab-target="#venue" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Venue Information</button>
-    <button data-tab-target="#hotel" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Hotel Information</button>
-    <button data-tab-target="#parking" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Parking</button>
+    <button id="dresscode-btn" data-tab-target="dresscode" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Dress Code</button>
+    <button id="venue-btn" data-tab-target="venue" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Venue Information</button>
+    <button id="hotel-btn" data-tab-target="hotel" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Hotel Information</button>
+    <button id="parking-btn" data-tab-target="parking" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Parking</button>
   </div>
 
   <!-- Tab Contents -->
@@ -45,52 +45,32 @@
 </main>
 
 <script>
-// Tabs logic
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
 
-function clearActive() {
-  tabButtons.forEach(btn => {
-    btn.classList.remove('border-black');
-    btn.classList.add('border-transparent');
-  });
-  tabContents.forEach(content => {
-    content.classList.add('hidden');
-  });
+let activeButton = document.getElementById("dresscode-btn");
+let activeContent = document.getElementById("dresscode");
+
+
+function updateActive(tabName) {
+  activeButton.classList.replace("border-black", "border-transparent")
+  activeContent.classList.add("hidden");
+  activeButton = document.getElementById(`${tabName}-btn`)
+  activeContent = document.getElementById(`${tabName}`)
+  activeButton.classList.replace("border-transparent", "border-black")
+  activeContent.classList.remove("hidden")
+  history.pushState(null, '', `#${tabName}`);
 }
 
-tabButtons.forEach(button => {
+document.querySelectorAll(".tab-btn").forEach(button => {
   button.addEventListener('click', () => {
-    clearActive();
-    button.classList.remove('border-transparent');
-    button.classList.add('border-black');
-    const target = document.querySelector(button.dataset.tabTarget);
-    if (target) {
-      target.classList.remove('hidden');
-    }
-    history.pushState(null, '', `${button.dataset.tabTarget}`);
+    updateActive(button.dataset.tabTarget)
   });
 });
 
 // Activate first tab by default on page load
 window.addEventListener('DOMContentLoaded', () => {
   const tab = window.location.hash.substr(1);
-  console.log(tab)
-  switch(tab) {
-    case "dresscode":
-      tabButtons[0].click();
-      break;
-    case "venue":
-      tabButtons[1].click();
-      break;
-    case "hotel":
-      tabButtons[2].click();
-      break;
-    case "parking":
-      tabButtons[3].click();
-      break;
-    default:
-      tabButtons[0].click();
+  if (["parking", "venue", "dresscode", "hotel"].includes(tab)){
+    updateActive(tab);
   }
 });
 </script>
