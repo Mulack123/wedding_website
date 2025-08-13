@@ -8,10 +8,17 @@
 
   <!-- Tabs for separate information types -->
   <div class="flex flex-wrap justify-center mb-8 border-b border-gray-300">
-    <button id="dresscode-btn" data-tab-target="dresscode" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Dress Code</button>
-    <button id="venue-btn" data-tab-target="venue" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Venue Information</button>
-    <button id="hotel-btn" data-tab-target="hotel" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Hotel Information</button>
-    <button id="parking-btn" data-tab-target="parking" class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-black focus:border-black transition">Parking</button>
+    <button id="dresscode-btn" data-tab-target="dresscode"
+      class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-black hover:border-gray-300 focus:border-black transition">Dress
+      Code</button>
+    <button id="venue-btn" data-tab-target="venue"
+      class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-gray-300 focus:border-black transition">Venue
+      Information</button>
+    <button id="hotel-btn" data-tab-target="hotel"
+      class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-gray-300 focus:border-black transition">Hotel
+      Information</button>
+    <button id="parking-btn" data-tab-target="parking"
+      class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-gray-300 focus:border-black transition">Parking</button>
   </div>
 
   <!-- Tab Contents -->
@@ -26,13 +33,17 @@
     <address>Blagrave St, Reading RG1 1QH</address>
     <p>Feel free to arrive 15–20 minutes early to find seating and settle in.</p>
     <div class="mt-8">
-      <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.mapsdirections.info/fr/calculer-la-population-sur-une-carte">Estimer la population sur la carte</a></iframe>
+      <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+          href="https://www.mapsdirections.info/fr/calculer-la-population-sur-une-carte">Estimer la population sur la
+          carte</a></iframe>
     </div>
   </section>
 
   <section id="hotel" class="tab-content hidden">
     <h2 class="text-2xl font-semibold mb-2">Hotel Information</h2>
-    <p>We've reserved a block of rooms at [Hotel Name]. Use the code <strong>WEDDING2026</strong> when booking for a discounted rate.</p>
+    <p>We've reserved a block of rooms at [Hotel Name]. Use the code <strong>WEDDING2026</strong> when booking for a
+      discounted rate.</p>
     <p>Address: [Hotel Address]</p>
     <p>Phone: [Hotel Phone Number]</p>
   </section>
@@ -46,33 +57,31 @@
 
 <script>
 
-let activeButton = document.getElementById("dresscode-btn");
-let activeContent = document.getElementById("dresscode");
+  let activeButton = document.getElementById("dresscode-btn");
+  let activeContent = document.getElementById("dresscode");
 
-
-function updateActive(tabName) {
-  activeButton.classList.replace("border-black", "border-transparent")
-  activeContent.classList.add("hidden");
-  activeButton = document.getElementById(`${tabName}-btn`)
-  activeContent = document.getElementById(`${tabName}`)
-  activeButton.classList.replace("border-transparent", "border-black")
-  activeContent.classList.remove("hidden")
-  history.pushState(null, '', `#${tabName}`);
-}
-
-document.querySelectorAll(".tab-btn").forEach(button => {
-  button.addEventListener('click', () => {
-    updateActive(button.dataset.tabTarget)
-  });
-});
-
-// Activate first tab by default on page load
-window.addEventListener('DOMContentLoaded', () => {
-  const tab = window.location.hash.substr(1);
-  if (["parking", "venue", "dresscode", "hotel"].includes(tab)){
-    updateActive(tab);
+  function updateActive(tabName) {
+    activeButton.classList.replace("border-black", "border-transparent")
+    activeContent.classList.add("hidden");
+    activeButton = document.getElementById(`${tabName}-btn`)
+    activeContent = document.getElementById(`${tabName}`)
+    activeButton.classList.replace("border-transparent", "border-black")
+    activeContent.classList.remove("hidden")
+    history.pushState(null, '', `#${tabName}`);
   }
-});
+
+  document.querySelectorAll(".tab-btn").forEach(button => {
+    button.addEventListener('click', () => {
+      updateActive(button.dataset.tabTarget)
+    });
+  });
+
+  // Activate first tab by default on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    const tab = window.location.hash.substr(1);
+    if (["parking", "venue", "dresscode", "hotel"].includes(tab)) {
+      updateActive(tab);
+    }
+  });
 </script>
 {% endblock content %}
-
