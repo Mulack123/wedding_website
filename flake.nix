@@ -22,6 +22,9 @@
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
 	python3
+        python3Packages.asgiref
+        python3Packages.django
+        python3Packages.sqlparse
       ];
 
       shellHook = ''

@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import PlaylistForm
+from .models import Invite, Music
 
 # Create your views here.
 def home(request):
@@ -16,7 +17,23 @@ def playlist(request):
     if request.method == "POST":
         form = PlaylistForm(request.POST)
         if form.is_valid():
+            # Validated Data
+            data = form.cleaned_data
+
+            # Create record
+            music = Music(
+                invite=Invite.objects.get(code=data['invite']),
+                title=data['title'],
+                artist=data['artist'],
+                spotify_link=data['spotify_link']
+            )
+            music.save()
+
             return HttpResponseRedirect("/playlist/submitted")
     else:
+        # New form request
         form = PlaylistForm()
-    return render(request, "main/playlist.html", {"title":"I&C | Playlist", "form":form})
+
+    # Get current song list
+    current_playlist = Music.objects.all()
+    return render(request, "main/playlist.html", {"title":"I&C | Playlist", "form":form, "playlist": current_playlist})
