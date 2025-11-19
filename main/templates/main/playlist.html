@@ -1,0 +1,11 @@
+{% extends "main/base.html" %}
+{% block content %}
+<main class="relative max-w-4xl mx-auto py-16 px-6 bg-white/80 text-black rounded-xl shadow-lg mt-10 ">
+  <h1 class="text-4xl font-bold mb-6 text-center">Playlist Suggestions</h1>
+<form action="/playlist/" method="post">
+{% csrf_token %}
+{{ form }}
+<input type="submit" value="Submit">
+</form>
+</main>
+{% endblock content %}
