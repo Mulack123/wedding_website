@@ -6,12 +6,29 @@
     {% csrf_token %}
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2"
-        for="{{ form.invite.id_for_label }}">Invite Code:</label>
-      {{ form.invite }}
+        for="{{ form.invite.id_for_label }}">Invite Code</label>
+        {{ form.invite }}
       <span class="text-red-500 text-xs italic">{{ form.invite.errors }}</span>
     </div>
-    {{ form }}
-    <input type="submit" value="Submit">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        for="{{ form.title.id_for_label }}">Song</label>
+        {{ form.title }}
+      <span class="text-red-500 text-xs italic">{{ form.title.errors }}</span>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        for="{{ form.artist.id_for_label }}">Artist</label>
+        {{ form.artist }}
+      <span class="text-red-500 text-xs italic">{{ form.artist.errors }}</span>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        for="{{ form.spotify_link.id_for_label }}">Spotify Link</label>
+        {{ form.spotify_link }}
+      <span class="text-red-500 text-xs italic">{{ form.spotify_link.errors }}</span>
+    </div>
+    <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   </form>
   <h2 class="text-3xl font-bold mb-5 text-center">Current Playlist</h2>
   {% for song in playlist %}
