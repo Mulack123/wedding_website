@@ -14,6 +14,8 @@ def gallery(request):
     return render(request, "main/gallery.html", {"title":"I&C | Gallery"})
 
 def playlist(request):
+    # Get current song list
+    current_playlist = Music.objects.all()
     if request.method == "POST":
         form = PlaylistForm(request.POST)
         if form.is_valid():
@@ -29,11 +31,14 @@ def playlist(request):
             )
             music.save()
 
-            return HttpResponseRedirect("/playlist/submitted")
+            return render(request, "main/playlist_submitted.html", {"title":"I&C | Playlist", "playlist": current_playlist, "code": data['invite']})
+            # return HttpResponseRedirect(f"/playlist/submitted?code={data['invite']}")
     else:
-        # New form request
-        form = PlaylistForm()
+        code = request.GET.get("code")
+        if code:
+            # New form request
+            form = PlaylistForm(initial={"invite": code})
+        else: 
+            form = PlaylistForm()
 
-    # Get current song list
-    current_playlist = Music.objects.all()
     return render(request, "main/playlist.html", {"title":"I&C | Playlist", "form":form, "playlist": current_playlist})
