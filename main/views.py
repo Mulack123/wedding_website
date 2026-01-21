@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
 
-from main.models import Guest
+from main.models import GalleryImage
 
 # Create your views here.
 def home(request):
@@ -12,4 +12,5 @@ def details(request):
     return render(request, "main/details.html", {"title":"I&C Wedding"})
 
 def gallery(request):
-    return render(request, "main/gallery.html", {"title":"I&C Wedding"})
+    images = GalleryImage.objects.all()
+    return render(request, "main/gallery.html", {"title":"I&C Wedding", "images": images})
