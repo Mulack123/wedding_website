@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
-from .models import Music, Invite, Guest
+from main.models import Music, Invite, Guest
 
 # Create your tests here.
 class MusicModelTest(TestCase):
