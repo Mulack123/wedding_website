@@ -24,6 +24,9 @@ class PlaylistFormTestCase(TestCase):
         form = PlaylistForm(data=form_data)
         self.assertTrue(form.is_valid())
 
+    def test_break_everything(self):
+        self.assertTrue(False)
+
     def test_invalid_invite_code(self):
         form_data = {
             'invite': 'INVALID',
