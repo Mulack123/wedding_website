@@ -34,3 +34,14 @@ class Music(models.Model):
     
     def __str__(self):
         return f"{self.title} by {self.artist}"
+
+
+class GalleryImage(models.Model):
+    link = models.URLField(max_length=150)
+    description = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.link.__str__().removeprefix("https://isobelcalumwedding.blob.core.windows.net/images/")
+
+
+
