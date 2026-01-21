@@ -12,10 +12,9 @@
   <main class="max-w-6xl mx-auto py-16 px-4">
     <h1 class="text-4xl font-bold mb-8">Our Gallery</h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <img src="gallery/gallery_1.JPG" alt="Photo 1" class="rounded-lg shadow" />
-      <img src="gallery/gallery_2.JPG" alt="Photo 2" class="rounded-lg shadow" />
-      <img src="gallery/gallery_3.JPG" alt="Photo 3" class="rounded-lg shadow" />
-      <img src="gallery/gallery_4.JPG" alt="Photo 3" class="rounded-lg shadow" />
+      {% for image in images %} 
+      <img src="{{image.link}}" alt="{{image.description}}" class="rounded-lg shadow" />
+      {% endfor %}
     </div>
   </main>
 </body>
