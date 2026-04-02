@@ -120,4 +120,19 @@ class RsvpModelTest(TestCase):
 
         assert going_guests.count() == 1
         assert going_guests.first().guest == guest1
+        
+    def test_queryset_filter_not_going(self):
+        invite3 = Invite.objects.create(name="Ben", code="test-code3")
+        invite4 = Invite.objects.create(name="Emily", code="test-code4")
+        
+        guest1 = Guest.objects.create(name=invite3.name, invite=invite3)
+        guest2 = Guest.objects.create(name=invite4.name, invite=invite4)
+
+        RSVP.objects.create(guest=guest1, going=True)
+        RSVP.objects.create(guest=guest2, going=False)
+
+        not_going = RSVP.objects.filter(going=False)
+
+        assert not_going.count() == 1
+        assert not_going.first().guest == guest2
     
