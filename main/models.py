@@ -23,7 +23,7 @@ class RSVP(models.Model):
     going = models.BooleanField()
     timestamp = models.DateTimeField(default=timezone.now)
     def __str__(self):
-        return f"{self.guest} is {'going' if self.going else 'a loser'}"
+        return f"{self.guest} is {'going' if self.going else 'not going'}"
     #TODO: Food choice
 
 class Music(models.Model):
