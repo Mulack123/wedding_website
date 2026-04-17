@@ -5,7 +5,7 @@ from .models import Invite, Guest
 form_classes = "border w-full form-input"
 
 class PlaylistForm(forms.Form):
-    invite = forms.CharField(label="Invite Code",widget=forms.TextInput(attrs={'class': form_classes}))
+    invite = forms.CharField(label="Invite Code", widget=forms.TextInput(attrs={'class': form_classes}))
     title = forms.CharField(label="Title", widget=forms.TextInput(attrs={'class': form_classes}))
     artist = forms.CharField(label="Artist", widget=forms.TextInput(attrs={'class': form_classes}))
     spotify_link = forms.URLField(label="Spotify Link", required=False, widget=forms.TextInput(attrs={'class': form_classes}))
@@ -14,15 +14,6 @@ class PlaylistForm(forms.Form):
         code = self.cleaned_data.get('invite')
         if not Invite.objects.filter(code=code).exists():
             raise forms.ValidationError("Invite code invalid")
-        return  code
-
-class RSVPCodeForm(forms.Form):
-    code = forms.CharField(label="Invite Code", widget=forms.TextInput(attrs={'class': form_classes}))
-
-    def clean_code(self):
-        code = self.cleaned_data.get('code')
-        if not Invite.objects.filter(code=code).exists():
-            raise forms.ValidationError("Invalid invite code")
         return code
 
     def clean_spotify_link(self):
@@ -33,3 +24,12 @@ class RSVPCodeForm(forms.Form):
             raise forms.ValidationError("Enter a valid open.spotify.com link")
         return spotify_link
 
+
+class RSVPCodeForm(forms.Form):
+    code = forms.CharField(label="Invite Code", widget=forms.TextInput(attrs={'class': form_classes}))
+
+    def clean_code(self):
+        code = self.cleaned_data.get('code')
+        if not Invite.objects.filter(code=code).exists():
+            raise forms.ValidationError("Invalid invite code")
+        return code
