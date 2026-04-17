@@ -1,1 +1,1 @@
-web: gunicorn wedding_website.wsgi
+web: python -m gunicorn wedding_website.wsgi
