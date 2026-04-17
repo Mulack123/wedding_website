@@ -1,6 +1,6 @@
 from django import forms
 import re
-from .models import Invite
+from .models import Invite, Guest
 
 form_classes = "border w-full form-input"
 
@@ -15,6 +15,15 @@ class PlaylistForm(forms.Form):
         if not Invite.objects.filter(code=code).exists():
             raise forms.ValidationError("Invite code invalid")
         return  code
+
+class RSVPCodeForm(forms.Form):
+    code = forms.CharField(label="Invite Code", widget=forms.TextInput(attrs={'class': form_classes}))
+
+    def clean_code(self):
+        code = self.cleaned_data.get('code')
+        if not Invite.objects.filter(code=code).exists():
+            raise forms.ValidationError("Invalid invite code")
+        return code
 
     def clean_spotify_link(self):
         spotify_link = self.cleaned_data.get('spotify_link')

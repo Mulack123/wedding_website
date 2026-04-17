@@ -13,14 +13,14 @@
       <div class="bg-white text-black rounded-full px-8 py-2 mb-4 flex flex-col md:flex-row items-center gap-2">
         <div>THURSDAY<br><span class="font-semibold">Oct 1, 2026</span></div>
         <div class="border-l border-gray-300 h-6 mx-3 hidden md:block"></div>
-        <div>12:00 AM<br><span class="font-semibold">Gloucestershire, UK</span></div>
+        <div>1:00 PM<br><span class="font-semibold">Gloucestershire, UK</span></div>
       </div>
-      <a href="rsvp.html" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">RSVP</a>
+      <a href="{% url 'rsvp' %}" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">RSVP</a>
     </div>
   </section>
 
   <script>
-    const countDownDate = new Date("Oct 1, 2026 12:00:00").getTime();
+    const countDownDate = new Date("Oct 1, 2026 13:00:00").getTime();
     const countdown = () => {
       const now = new Date().getTime();
       const distance = countDownDate - now;

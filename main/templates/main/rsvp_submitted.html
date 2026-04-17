@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+{% block content %}
+<main class="relative max-w-4xl mx-auto py-16 px-6 bg-white/80 text-black rounded-xl shadow-lg mt-10 text-center">
+  <h1 class="text-4xl font-bold mb-4">Thank you!</h1>
+  <p class="text-gray-600 mb-8">Your RSVP has been recorded. We can't wait to celebrate with you.</p>
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 text-left max-w-sm mx-auto">
+    {% for guest in guests %}
+    <div class="mb-4 {% if not forloop.last %}border-b pb-4{% endif %}">
+      <p class="font-bold">{{ guest.name }}</p>
+      <p class="text-sm text-gray-600">{{ guest.rsvp.going|yesno:"Attending,Not attending" }}</p>
+      {% if guest.rsvp.dietary_requirements %}
+      <p class="text-sm text-gray-500 mt-1">{{ guest.rsvp.dietary_requirements }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <a href="{% url 'home' %}" class="inline-block mt-4 border border-black px-6 py-2 rounded-full hover:bg-black hover:text-white transition">Back to home</a>
+</main>
+{% endblock content %}

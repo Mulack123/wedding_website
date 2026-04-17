@@ -1,7 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .forms import PlaylistForm
-from .models import Invite, Music
+from django.utils import timezone
+from .forms import PlaylistForm, RSVPCodeForm
+from .models import Invite, Music, Guest, RSVP
 
 # Create your views here.
 def home(request):
@@ -42,3 +43,38 @@ def playlist(request):
             form = PlaylistForm()
 
     return render(request, "main/playlist.html", {"title":"I&C | Playlist", "form":form, "playlist": current_playlist})
+
+def rsvp(request):
+    if request.method == "POST":
+        step = request.POST.get('step')
+        if step == 'code':
+            form = RSVPCodeForm(request.POST)
+            if form.is_valid():
+                return HttpResponseRedirect(f"/rsvp/?code={form.cleaned_data['code']}")
+            return render(request, "main/rsvp_code.html", {"title": "I&C | RSVP", "form": form})
+        elif step == 'rsvp':
+            code = request.POST.get('code')
+            try:
+                invite = Invite.objects.get(code=code)
+            except Invite.DoesNotExist:
+                return HttpResponseRedirect('/rsvp/')
+            guests = Guest.objects.filter(invite=invite)
+            for guest in guests:
+                going = request.POST.get(f'going_{guest.id}') == 'yes'
+                dietary = request.POST.get(f'dietary_{guest.id}', '')
+                RSVP.objects.update_or_create(
+                    guest=guest,
+                    defaults={'going': going, 'dietary_requirements': dietary, 'timestamp': timezone.now()}
+                )
+            return render(request, "main/rsvp_submitted.html", {"title": "I&C | RSVP", "invite": invite, "guests": guests})
+    else:
+        code = request.GET.get('code')
+        if code:
+            try:
+                invite = Invite.objects.get(code=code)
+                guests = Guest.objects.filter(invite=invite)
+                return render(request, "main/rsvp.html", {"title": "I&C | RSVP", "invite": invite, "guests": guests, "code": code})
+            except Invite.DoesNotExist:
+                pass
+        form = RSVPCodeForm()
+        return render(request, "main/rsvp_code.html", {"title": "I&C | RSVP", "form": form})

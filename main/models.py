@@ -21,10 +21,11 @@ class Guest(models.Model):
 class RSVP(models.Model):
     guest = models.OneToOneField(Guest, on_delete=models.CASCADE)
     going = models.BooleanField()
+    dietary_requirements = models.TextField(blank=True, default='')
     timestamp = models.DateTimeField(default=timezone.now)
+
     def __str__(self):
         return f"{self.guest} is {'going' if self.going else 'not going'}"
-    #TODO: Food choice
 
 class Music(models.Model):
     invite = models.ForeignKey(Invite, on_delete=models.CASCADE)
