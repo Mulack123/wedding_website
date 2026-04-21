@@ -12,7 +12,26 @@ def details(request):
     return render(request, "main/details.html", {"title":"I&C | Details"})
 
 def gallery(request):
-    return render(request, "main/gallery.html", {"title":"I&C | Gallery"})
+    account = "isobelcalumwedding"
+    container = "images"
+    list_url = f"https://{account}.blob.core.windows.net/{container}?restype=container&comp=list"
+    import urllib.request
+    import xml.etree.ElementTree as ET
+    try:
+        with urllib.request.urlopen(list_url) as resp:
+            tree = ET.parse(resp)
+        ns = {"a": "http://schemas.microsoft.com/windowsazure"}
+        blobs = tree.findall(".//a:Blob/a:Name", ns)
+        if not blobs:
+            blobs = tree.findall(".//Blob/Name")
+        photo_urls = [
+            f"https://{account}.blob.core.windows.net/{container}/{b.text}"
+            for b in blobs
+            if b.text and b.text.startswith("GBP-")
+        ]
+    except Exception:
+        photo_urls = []
+    return render(request, "main/gallery.html", {"title": "I&C | Gallery", "photos": photo_urls})
 
 def playlist(request):
     # Get current song list
