@@ -63,6 +63,9 @@ def playlist(request):
 
     return render(request, "main/playlist.html", {"title":"I&C | Playlist", "form":form, "playlist": current_playlist})
 
+def registry(request):
+    return render(request, "main/registry.html", {"title": "I&C | Registry"})
+
 def rsvp(request):
     if request.method == "POST":
         step = request.POST.get('step')
