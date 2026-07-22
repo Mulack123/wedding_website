@@ -1,8 +1,8 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-  <section class="relative h-screen bg-cover bg-center" style="background-image: url('gallery/index_background.JPG')">
-    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center">
+  <section class="relative h-screen bg-cover bg-center" style="background-image: url('https://isobelcalumwedding.blob.core.windows.net/images/website_background_test_2.webp')">
+    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center text-white">
       <div id="countdown" class="text-sm tracking-widest mb-4">
         <span id="days">00</span> :
         <span id="hours">00</span> :
@@ -13,14 +13,14 @@
       <div class="bg-white text-black rounded-full px-8 py-2 mb-4 flex flex-col md:flex-row items-center gap-2">
         <div>THURSDAY<br><span class="font-semibold">Oct 1, 2026</span></div>
         <div class="border-l border-gray-300 h-6 mx-3 hidden md:block"></div>
-        <div>12:00 AM<br><span class="font-semibold">Gloucestershire, UK</span></div>
+        <div>2:00 PM<br><span class="font-semibold">The Cotswolds, UK</span></div>
       </div>
-      <a href="rsvp.html" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">RSVP</a>
+      <a href="{% url 'rsvp' %}" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">RSVP</a>
     </div>
   </section>
 
   <script>
-    const countDownDate = new Date("Oct 1, 2026 12:00:00").getTime();
+    const countDownDate = new Date("Oct 1, 2026 14:00:00").getTime();
     const countdown = () => {
       const now = new Date().getTime();
       const distance = countDownDate - now;

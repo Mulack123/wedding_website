@@ -17,41 +17,160 @@
     <button id="hotel-btn" data-tab-target="hotel"
       class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-gray-300 focus:border-black transition">Hotel
       Information</button>
-    <button id="parking-btn" data-tab-target="parking"
-      class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-gray-300 focus:border-black transition">Parking</button>
+    <button id="faqs-btn" data-tab-target="faqs"
+      class="tab-btn px-4 py-2 font-semibold text-black border-b-4 border-transparent hover:border-gray-300 focus:border-black transition">FAQ's</button>
   </div>
 
   <!-- Tab Contents -->
   <section id="dresscode" class="tab-content">
     <h2 class="text-2xl font-semibold mb-2">Dress Code</h2>
-    <p>Please dress elegantly — cocktail attire recommended. We suggest light, breathable fabrics for comfort.</p>
+    <p>We are requesting that all our guests dress in formal attire. Please avoid jeans, short dresses and the colours maroon and white as these colours are reserved for the bridal party.</p>
+    <p class="mt-4">Royal Marines are encouraged to wear their lovats.</p>
   </section>
 
   <section id="venue" class="tab-content hidden">
-    <h2 class="text-2xl font-semibold mb-2">Venue Information</h2>
-    <p>📍 The ceremony will be held at [Venue Name], located at</p>
-    <address>Blagrave St, Reading RG1 1QH</address>
-    <p>Feel free to arrive 15–20 minutes early to find seating and settle in.</p>
-    <div class="mt-8">
-      <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
-          href="https://www.mapsdirections.info/fr/calculer-la-population-sur-une-carte">Estimer la population sur la
-          carte</a></iframe>
+    <h2 class="text-2xl font-semibold mb-6">Venue Information</h2>
+    <div class="flex flex-col sm:flex-row gap-6 mb-6">
+      <div class="flex-1 space-y-4">
+        <div>
+          <h3 class="text-lg font-semibold">Hyde House</h3>
+          <address class="not-italic text-gray-600 mt-1">Fosse Way, Stow-on-the-Wold<br>Cheltenham GL54 1FA</address>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-black">Arrival</h3>
+          <p class="text-gray-700 mt-1">Please arrive at 13:00, allowing plenty of time to park and settle in before the ceremony starts.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-black">Parking</h3>
+          <p class="text-gray-700 mt-1">Free parking is available on site.</p>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-xl overflow-hidden shadow-md">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d157504.11332433432!2d-2.0326735054687473!3d51.915678800000016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48712f4f19ed73f7%3A0x1295330511e91db3!2sHyde%20House!5e0!3m2!1sen!2suk!4v1776883204778!5m2!1sen!2suk" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
   <section id="hotel" class="tab-content hidden">
-    <h2 class="text-2xl font-semibold mb-2">Hotel Information</h2>
-    <p>We've reserved a block of rooms at [Hotel Name]. Use the code <strong>WEDDING2026</strong> when booking for a
-      discounted rate.</p>
-    <p>Address: [Hotel Address]</p>
-    <p>Phone: [Hotel Phone Number]</p>
+    <h2 class="text-2xl font-semibold mb-4">Accommodation</h2>
+    <p class="mb-6 text-gray-600">Below is a list of nearby places to stay.</p>
+    <div class="grid gap-4 sm:grid-cols-2">
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">The Bell</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://thebellatstow.com" target="_blank" class="text-blue-600 hover:underline">thebellatstow.com</a>
+        </p>
+        <p class="text-sm text-gray-700">01451 870916</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">Number 4 at Stow</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://hotelnumberfour.co.uk" target="_blank" class="text-blue-600 hover:underline">hotelnumberfour.co.uk</a>
+        </p>
+        <p class="text-sm text-gray-700">01451 830297</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">The Old Stocks Inn</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://oldstocksinn.com" target="_blank" class="text-blue-600 hover:underline">oldstocksinn.com</a>
+        </p>
+        <p class="text-sm text-gray-700">01451 830666</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">The Porch House</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://porch-house.co.uk" target="_blank" class="text-blue-600 hover:underline">porch-house.co.uk</a>
+        </p>
+        <p class="text-sm text-gray-700">01451 870048</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">The Sheep on Sheep Street</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://thesheepstow.co.uk" target="_blank" class="text-blue-600 hover:underline">thesheepstow.co.uk</a>
+        </p>
+        <p class="text-sm text-gray-700">01451 830344</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">The King's Arms</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://kingsarmsstow.co.uk" target="_blank" class="text-blue-600 hover:underline">kingsarmsstow.co.uk</a>
+        </p>
+        <p class="text-sm text-gray-700">01451 830364</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">Park Farm Holiday Cottages</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://parkfarmholidaycottages.co.uk" target="_blank" class="text-blue-600 hover:underline">parkfarmholidaycottages.co.uk</a>
+        </p>
+        <p class="text-sm text-gray-700">01451 870568</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">Teagles Cottage</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="https://boltholeretreats.co.uk/property/teagles-cottage" target="_blank" class="text-blue-600 hover:underline">boltholeretreats.co.uk</a>
+        </p>
+        <p class="text-sm text-gray-700">01242 851208</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">New Loos Cottage</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="mailto:Lynseymason78@yahoo.com" class="text-blue-600 hover:underline">Lynseymason78@yahoo.com</a>
+        </p>
+        <p class="text-sm text-gray-700">07530 838 437</p>
+      </div>
+
+      <div class="border border-white/60 rounded-lg p-4 bg-white/40 shadow-sm backdrop-blur-sm">
+        <h3 class="text-lg font-semibold mb-1">Kates Cottage, Stable Cottage &amp; Hayloft Apartments</h3>
+        <p class="text-sm text-gray-500 mb-1">
+          <a href="mailto:nicolacharlesworth@me.com" class="text-blue-600 hover:underline">nicolacharlesworth@me.com</a>
+        </p>
+        <p class="text-sm text-gray-700">07787 517 783</p>
+      </div>
+
+    </div>
   </section>
 
-  <section id="parking" class="tab-content hidden">
-    <h2 class="text-2xl font-semibold mb-2">Parking</h2>
-    <p>Free parking is available on-site. Alternatively, nearby lots at [Locations] are available for a small fee.</p>
-    <p>We recommend carpooling or rideshares if possible.</p>
+  <section id="faqs" class="tab-content hidden">
+    <h2 class="text-2xl font-semibold mb-6">FAQ's</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-lg font-semibold mb-2">When should I RSVP by?</h3>
+        <p class="text-gray-700">Please RSVP no later than 01/08/2026 using the QR code on your formal invitation or by clicking the RSVP tab in the menu above. If you do not RSVP in time, we will assume that you are unable to attend.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">What do I do if I can't attend?</h3>
+        <p class="text-gray-700">You will be missed! If you can not make it to the wedding, please let us know as soon as possible and RSVP "not attending" so we can plan accordingly. Thank you!</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Can I take pictures during the ceremony?</h3>
+        <p class="text-gray-700">NO. We are having an unplugged ceremony, meaning that once the ceremony begins, we ask that all phones be put away and silenced. We want everyone to be fully present with us and for our photographer to be able to capture the best moments, which we will absolutely share with you. Post ceremony, please feel free to take any pictures or videos.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Can I bring children?</h3>
+        <p class="text-gray-700">We have chosen to make our wedding an adults only event. For this reason we are unable to accommodate children and kindly request they are not in attendance. We hope you understand and are still able to make it!</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Can I bring a guest?</h3>
+        <p class="text-gray-700">Due to limited space, we are only able to accommodate those guests formally invited. Your unique code provided on the invite will list those invited to the ceremony on the RSVP section of the website.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Wedding Gifts</h3>
+        <p class="text-gray-700">Your presence on our special day truly is the greatest gift of all. However, if you would like to give a gift, we would be incredibly grateful for a contribution towards our honeymoon fund. You can find more details on our <a href="{% url 'registry' %}" class="underline hover:text-black transition">Wedding Registry</a> page.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Parking</h3>
+        <p class="text-gray-700">There is parking at the venue on a first come first served basis but it should be large enough to accommodate all guests.</p>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -79,7 +198,7 @@
   // Activate first tab by default on page load
   window.addEventListener('DOMContentLoaded', () => {
     const tab = window.location.hash.substr(1);
-    if (["parking", "venue", "dresscode", "hotel"].includes(tab)) {
+    if (["faqs", "venue", "dresscode", "hotel"].includes(tab)) {
       updateActive(tab);
     }
   });

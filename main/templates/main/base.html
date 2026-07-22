@@ -13,7 +13,7 @@
   </style>
 	</head>
 
-    <body>
+    <body style="{% block body_style %}background-image: url('https://isobelcalumwedding.blob.core.windows.net/images/website_background_test_2.webp'); background-size: cover; background-attachment: fixed; background-position: center 30%;{% endblock %}">
 	<header class="flex justify-between items-center px-6 py-4 bg-white text-black shadow-md relative z-10">
     <div class="text-2xl font-bold">I&C</div>
 
@@ -30,7 +30,8 @@
       <a href="{% url 'details' %}" class="hover:text-gray-700 transition">Event Details</a>
       <a href="{% url 'gallery' %}" class="hover:text-gray-700 transition">Photo Gallery</a>
       <a href="{% url 'playlist' %}" class="hover:text-gray-700 transition">Playlist</a>
-      <a href="rsvp.html" class="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">RSVP</a>
+      <a href="{% url 'registry' %}" class="hover:text-gray-700 transition">Registry</a>
+      <a href="{% url 'rsvp' %}" class="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">RSVP</a>
     </nav>
   </header>
 	{% block content %}{% endblock content %}

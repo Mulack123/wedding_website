@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% block content %}
+<main class="relative max-w-4xl mx-auto py-16 px-6 bg-white/80 text-black rounded-xl shadow-lg mt-10">
+  <h1 class="text-4xl font-bold mb-2 text-center">RSVP</h1>
+  <p class="text-center text-gray-600 mb-8">Enter your invite code to get started</p>
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-sm mx-auto" action="/rsvp/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="step" value="code">
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.code.id_for_label }}">Invite Code</label>
+      {{ form.code }}
+      <span class="text-red-500 text-xs italic">{{ form.code.errors }}</span>
+    </div>
+    <input type="submit" value="Continue" class="w-full bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded cursor-pointer">
+  </form>
+</main>
+{% endblock content %}
